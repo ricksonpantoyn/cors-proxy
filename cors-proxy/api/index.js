@@ -6,7 +6,12 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; RicksonNewsBot/1.0)',
+        'Accept': 'application/xml, application/rss+xml, text/xml, */*'
+      }
+    });
     const data = await response.text();
 
     res.setHeader('Access-Control-Allow-Origin', '*');
